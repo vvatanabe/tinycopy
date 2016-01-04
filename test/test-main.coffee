@@ -9,13 +9,6 @@ trigger = (el, ev) ->
   e.initEvent ev, true, true
   el.dispatchEvent e
 
-isIE = ->
-  userAgent = window.navigator.userAgent.toLowerCase()
-  if userAgent.match /(msie|MSIE)/ or userAgent.match /(T|t)rident/
-      isIE = true
-  else
-      isIE = false
-
 describe "main", ->
 
   if global.mocha
@@ -70,8 +63,5 @@ describe "main", ->
       done()
     copy.on 'error', ->
       done()
-    if isIE()
-      copy.addTemporary()
-      copy.execCopy()
-    else 
-      $("#button").click()
+    copy.addTemporary()
+    copy.execCopy()
