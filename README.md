@@ -8,7 +8,7 @@ Tiny library for clipboard copy.
 
 tinycopy detects and supports CommonJS (node, browserify) and AMD (RequireJS). In the absence of those, it adds a object `TinyCopy` to the global namespace.
 
-## Bower
+### Bower
 
 Install [`node`](https://nodejs.org/download/) and [`bower`](http://bower.io/) if you haven't already.
 
@@ -32,7 +32,7 @@ To pull in updates and bug fixes:
 $ bower update tinycopy
 ```
 
-## Node / npm
+### Node / npm
 
 ```
 $ npm install tinycopy
