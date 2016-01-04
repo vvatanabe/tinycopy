@@ -4,14 +4,12 @@ browsers:
       version: 42..latest
     - name: firefox
       version: 41..latest
-    - name: ie
-      version: 9..latest
     - name: opera
-      version: 29..latest
+      version: latest
     - name: android
       version: -2..latest
-    - name: safari
-      version: -2..latest
+    - name: iphone
+      version: latest
 browserify:
    - transform: coffeeify
    - options:
