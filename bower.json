@@ -1,9 +1,14 @@
 {
     "name": "tinycopy",
+    "version": "1.0.0",
     "description": "Tiny library for clipboard copy.",
+    "license": "MIT",
     "main": "dist/tinycopy.js",
+    "homepage": "https://github.com/vvatanabe/tinycopy",
     "keywords": [
-        "copy"
+        "copy",
+        "tiny",
+        "clipboard"
     ],
     "ignore": [
         "/.*",
@@ -13,5 +18,5 @@
         "lib",
         "src",
         "test"
-        ]
+    ]
 }
