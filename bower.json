@@ -1,0 +1,17 @@
+{
+    "name": "tinycopy",
+    "description": "Tiny library for clipboard copy.",
+    "main": "dist/tinycopy.js",
+    "keywords": [
+        "copy"
+    ],
+    "ignore": [
+        "/.*",
+        "*.json",
+        "node_modules",
+        "demo",
+        "lib",
+        "src",
+        "test"
+        ]
+}
