@@ -63,5 +63,6 @@ describe "main", ->
       done()
     copy.on 'error', ->
       done()
-    copy.addTemporary()
-    copy.execCopy()
+    $("#button").click()
+
+
