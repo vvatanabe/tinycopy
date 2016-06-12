@@ -27,12 +27,12 @@ table {
   margin: 10px 0 15px 0;
   border-collapse: collapse;
 }
-td,th { 
+td,th {
   border: 1px solid #ddd;
   padding: 3px 10px;
 }
 th {
-  padding: 5px 10px;  
+  padding: 5px 10px;
 }
 
 a {
@@ -152,31 +152,80 @@ sup {
   }
 }
 </style>
-<title>Coppy.js</title>
+<title>tinycopy.js</title>
 
 </head>
 <body>
 <h2>tinycopy.js</h2>
 
-<h3>demo</h3>
-<input id="input" type="text" value="hello" disabled="disabled">
-<button id="button">Copy</button>
-<script type="text/javascript" src="jquery.js"></script>
+<br/>
+
+<h3>demo1. input</h3>
+<input id="input" type="text" value="hello" disabled="disabled">　<button id="button-input">Copy</button>
+
+<br/><br/>
+
+<h3>demo2. text</h3>
+<div>
+  <span>11679</span>　<button id="button-text1" data-text="11679">Copy</button>
+</div>
+<br />
+<div>
+  <span>29845</span>　<button id="button-text2" data-text="29845">Copy</button>
+</div>
+
+
 <script type="text/javascript" src="../dist/tinycopy.js"></script>
 <script>
-    var $button = $('#button')[0];
-    var $input = $('#input')[0];
-    var tinycopy = new TinyCopy($button, $input);
-    tinycopy.on('success', function() {
-        var message = 'copy success.';
+
+    var $ = function(selector) {
+      return window.document.querySelector(selector);
+    };
+
+    var $input = $('#input');
+    var $buttonInput = $('#button-input');
+    var inputCopy = new TinyCopy($buttonInput, $input);
+    inputCopy.on('success', function(data) {
+        var message = 'Success. text is:' + data;
         console.log(message);
         alert(message);
-    });
-    tinycopy.on('error', function() {
-        var message = 'copy error. Selected input value, and press Ctrl+C';
+    }).on('error', function(err) {
+        var message = 'Error.';
         console.log(message);
+        console.log(err);
         alert(message);
     });
+
+    var $buttonText1 = $('#button-text1');
+    var text = $buttonText1.getAttribute('data-text');
+    var inputText = new TinyCopy($buttonText1, text);
+    inputText.on('success', function(data) {
+        var message = 'Success. text is:' + data;
+        console.log(message);
+        alert(message);
+    }).on('error', function(err) {
+        var message = 'Error.';
+        console.log(message);
+        console.log(err);
+        alert(message);
+    });
+
+    var $buttonText2 = $('#button-text2');
+    $buttonText2.addEventListener('click', function () {
+      var text = $buttonText2.getAttribute('data-text');
+      TinyCopy.exec(text).then(function (data) {
+        var message = 'Success. text is:' + data;
+        console.log(message);
+        alert(message);
+      }).catch(function (err) {
+        var message = 'Error.';
+        console.log(message);
+        console.log(err);
+        alert(message);
+      });
+    });
+
 </script>
+
 </body>
 </html>
