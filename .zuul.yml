@@ -11,7 +11,7 @@ browsers:
     - name: iphone
       version: latest
 browserify:
-   - transform: coffeeify
+   - transform: babelify
    - options:
        extensions:
-         - .coffee
+         - .js
