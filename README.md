@@ -1,7 +1,5 @@
 # tinycopy [![Build Status](https://travis-ci.org/vvatanabe/tinycopy.svg)](https://travis-ci.org/vvatanabe/tinycopy)
 
-[![Sauce Test Status](https://saucelabs.com/browser-matrix/vvatanabe.svg)](https://saucelabs.com/u/vvatanabe)
-
 Tiny library for clipboard copy.
 
 ## Install
@@ -40,16 +38,33 @@ $ npm install tinycopy
 
 ## Usage
 
-```
-
+``` javascript
+// copy from input element
 var tinycopy = new TinyCopy(element, input);
-tinycopy.on('success', function() {
+tinycopy.on('success', function(data) {
   // onCopyCompleted
 });
-tinycopy.on('error', function() {
+tinycopy.on('error', function(err) {
   // onCopyFailed
 });
 
+// copy from text1
+var tinycopy = new TinyCopy(element, 'hello');
+tinycopy.on('success', function(data) {
+  // onCopyCompleted
+});
+tinycopy.on('error', function(err) {
+  // onCopyFailed
+});
+
+// copy from text2
+element.addEventListener('click', function () {
+  TinyCopy.exec('hello').then(function (data) {
+    // onCopyCompleted
+  }).catch(function (err) {
+    // onCopyFailed
+  });
+});
 ```
 
 ## License
