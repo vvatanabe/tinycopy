@@ -34,21 +34,51 @@ describe("main", () => {
     done();
   });
 
-  describe("copy from text", () => {
+  it("can be create temp element.", done => {
+    const element = TinyCopy.createTempElement('hello');
+    assert('hello' === element.value);
+    done();
+  });
+
+  describe("can be copy from text", () => {
 
     before(() => {
       global.button = document.createElement('button');
       global.button.setAttribute('id', 'button');
-      global.button.setAttribute('data-text', 'hello');
       global.button.textContent = 'copy';
       document.body.appendChild(button);
     });
 
     after(() => document.body.removeChild(global.button));
 
+    beforeEach(done => {
+      global.copy = new TinyCopy($("#button"), 'hello');
+      done();
+    });
+
+    afterEach(done => {
+      global.copy = null;
+      done();
+    });
+
+    it("can be on event.", done => {
+      copy.on('success', () => done());
+      copy.on('error', () => done());
+      $("#button").click();
+    });
+
+    it("can be exec.", done => {
+      TinyCopy.exec('hello').then(data => {
+        assert(data === 'hello')
+        done()
+      }).catch(err => {
+        done()
+      })
+    });
+
   });
 
-  describe("copy from element", () => {
+  describe("can be copy from element", () => {
 
     before(() => {
       global.button = document.createElement('button');
@@ -79,13 +109,7 @@ describe("main", () => {
       done();
     });
 
-    it("can be initialized.", done => {
-      assert(copy.listeners['success']);
-      assert(copy.listeners['error']);
-      done();
-    });
-
-    it("can be click event.", done => {
+    it("can be on event.", done => {
       copy.on('success', () => done());
       copy.on('error', () => done());
       $("#button").click();
