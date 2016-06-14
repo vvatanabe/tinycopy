@@ -1,4 +1,4 @@
-# tinycopy [![Build Status](https://travis-ci.org/vvatanabe/tinycopy.svg)](https://travis-ci.org/vvatanabe/tinycopy) [![npm version](https://badge.fury.io/js/tinycopy.svg)](https://badge.fury.io/js/tinycopy) [![Bower version](https://badge.fury.io/bo/tinycopy.svg)](https://badge.fury.io/bo/tinycopy)
+# tinycopy [![Build Status](https://travis-ci.org/vvatanabe/tinycopy.svg)](https://travis-ci.org/vvatanabe/tinycopy) [![Coverage Status](https://coveralls.io/repos/github/vvatanabe/tinycopy/badge.svg?branch=master)](https://coveralls.io/github/vvatanabe/tinycopy?branch=master) [![npm version](https://badge.fury.io/js/tinycopy.svg)](https://badge.fury.io/js/tinycopy) [![Bower version](https://badge.fury.io/bo/tinycopy.svg)](https://badge.fury.io/bo/tinycopy)
 
 Tiny library for clipboard copy.
 
