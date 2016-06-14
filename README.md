@@ -1,4 +1,4 @@
-# tinycopy [![Build Status](https://travis-ci.org/vvatanabe/tinycopy.svg)](https://travis-ci.org/vvatanabe/tinycopy)
+# tinycopy [![Build Status](https://travis-ci.org/vvatanabe/tinycopy.svg)](https://travis-ci.org/vvatanabe/tinycopy) [![npm version](https://badge.fury.io/js/tinycopy.svg)](https://badge.fury.io/js/tinycopy) [![Bower version](https://badge.fury.io/bo/tinycopy.svg)](https://badge.fury.io/bo/tinycopy)
 
 [![Sauce Test Status](https://saucelabs.com/browser-matrix/vvatanabe.svg)](https://saucelabs.com/u/vvatanabe)
 
