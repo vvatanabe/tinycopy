@@ -25,16 +25,19 @@
   "scripts": {
     "test": "mocha --require test/utils/dom.js --compilers js:babel-register test/**/test-*.js",
     "test-local": "zuul --debug --local 8080 -- test/**/test-*.js",
+    "test-cov": "babel-node node_modules/.bin/babel-istanbul cover node_modules/.bin/_mocha --report lcovonly -- ./test --require test/utils/dom.js",
+    "coveralls": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "test-saucelabs": "zuul -- test/**/test-*.js",
     "build": "npm run build-lib && npm run build-dist && npm run build-minify",
     "build-dist": "browserify --debug --standalone TinyCopy lib/main.js -o dist/tinycopy.js",
     "build-minify": "uglifyjs dist/tinycopy.js -o dist/tinycopy.min.js",
     "build-lib": "babel src --out-dir lib",
     "flow": "$(npm bin)/flow",
-    "cover": "babel-node $(npm bin)/isparta cover --report text --report html _mocha",
     "prepublish": "npm run build"
   },
   "devDependencies": {
+    "babel-cli": "^6.10.1",
+    "babel-istanbul": "^0.8.0",
     "babel-plugin-add-module-exports": "^0.2.1",
     "babel-plugin-es6-promise": "^1.0.0",
     "babel-plugin-syntax-flow": "^6.8.0",
@@ -45,10 +48,10 @@
     "babel-register": "^6.9.0",
     "babelify": "^7.3.0",
     "browserify": "^13.0.1",
+    "coveralls": "^2.11.9",
     "es6-promise": "^3.2.1",
     "flow-bin": "^0.27.0",
     "flowtype": "^1.0.0",
-    "isparta": "^4.0.0",
     "jsdom": "^9.2.1",
     "mocha": "^2.5.3",
     "power-assert": "^1.4.1",
@@ -59,9 +62,5 @@
     "copy",
     "tiny",
     "clipboard"
-  ],
-  "dependencies": {
-    "babel-cli": "^6.10.1",
-    "brfs": "^1.4.3"
-  }
+  ]
 }

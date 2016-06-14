@@ -1,8 +1,9 @@
 npm-debug.log
-bower_components
 node_modules
 lib
+coverage
 *~
 *.swp
 *.swo
 tmux-*.log
+.env
