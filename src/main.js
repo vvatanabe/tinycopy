@@ -1,10 +1,14 @@
+// @flow
+
 /*
   tinycopy - A small library for clipboard copy
   @version 2.0.0
  */
 export default class TinyCopy {
 
-  constructor(trigger, target) {
+  listeners: {};
+
+  constructor(trigger: HTMLElement, target: HTMLInputElement|string) {
 
     this.listeners = {};
 
@@ -12,7 +16,7 @@ export default class TinyCopy {
       throw new Error('Illegal arguments error: trigger');
     }
 
-    const value = ((target) => {
+    const value: string = ((target: any): string => {
       if (TinyCopy.isElement(target)) {
         return target.value
       } else if(TinyCopy.isText(target)) {
@@ -32,24 +36,24 @@ export default class TinyCopy {
 
   }
 
-  on(event, action) {
+  on(event: string, action: Function): TinyCopy {
     this.listeners[event] = action;
     return this;
   }
 
-  emit(event) {
+  emit(event: string): void {
     this.listeners[event] && this.listeners[event].apply(null, [].slice.call(arguments, 1));
   }
 
-  static createTempElement(value) {
-    const element = document.createElement('input');
-    element.style.opacity = 0;
+  static createTempElement(value: string): HTMLInputElement {
+    const element: HTMLInputElement = document.createElement('input');
+    element.style.opacity = '0';
     element.setAttribute('readonly', '');
     element.value = value;
     return element;
   }
 
-  static exec(value) {
+  static exec(value: string): Promise {
     return new Promise((resolve, reject) => {
       const temp = TinyCopy.createTempElement(value);
       document.body.appendChild(temp);
@@ -68,15 +72,15 @@ export default class TinyCopy {
     });
   }
 
-  static isElement(node) {
+  static isElement(node: any): boolean {
     return !!(node && (node.nodeName || (node.prop && node.attr && node.find)));
   }
 
-  static isText(obj) {
+  static isText(obj: any): boolean {
     return TinyCopy.is('String', obj) || TinyCopy.is('Number', obj)
   }
 
-  static is(type, obj) {
+  static is(type: string, obj: any): boolean {
     const clazz = Object.prototype.toString.call(obj).slice(8, -1);
     return obj !== undefined && obj !== null && clazz === type;
   }
