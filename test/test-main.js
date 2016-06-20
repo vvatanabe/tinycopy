@@ -68,12 +68,15 @@ describe("main", () => {
     });
 
     it("can be exec.", done => {
-      TinyCopy.exec('hello').then(data => {
-        assert(data === 'hello')
-        done()
-      }).catch(err => {
-        done()
-      })
+      TinyCopy.exec('hello', (err, data) => {
+        if (!err) {
+          assert(data === 'hello');
+          done()
+        } else {
+          assert(err);
+          done()
+        }
+      });
     });
 
   });

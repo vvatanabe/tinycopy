@@ -16,7 +16,6 @@
     ],
     "plugins": [
       "add-module-exports",
-      "es6-promise",
       "transform-class-properties",
       "syntax-flow",
       "transform-flow-strip-types"
@@ -39,7 +38,6 @@
     "babel-cli": "^6.10.1",
     "babel-istanbul": "^0.8.0",
     "babel-plugin-add-module-exports": "^0.2.1",
-    "babel-plugin-es6-promise": "^1.0.0",
     "babel-plugin-syntax-flow": "^6.8.0",
     "babel-plugin-transform-class-properties": "^6.5.2",
     "babel-plugin-transform-flow-strip-types": "^6.8.0",
@@ -49,7 +47,6 @@
     "babelify": "^7.3.0",
     "browserify": "^13.0.1",
     "coveralls": "^2.11.9",
-    "es6-promise": "^3.2.1",
     "flow-bin": "^0.27.0",
     "flowtype": "^1.0.0",
     "jsdom": "^9.2.1",

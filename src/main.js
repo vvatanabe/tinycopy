@@ -2,7 +2,6 @@
 
 /*
   tinycopy - A small library for clipboard copy
-  @version 2.0.0
  */
 export default class TinyCopy {
 
@@ -27,10 +26,12 @@ export default class TinyCopy {
     })(target);
 
     trigger.addEventListener('click', () => {
-      TinyCopy.exec(value).then((data) => {
-        this.emit('success', data);
-      }).catch((err) => {
-        this.emit('error', err);
+      TinyCopy.exec(value, (err, data) => {
+        if (!err) {
+          this.emit('success', data);
+        } else {
+          this.emit('error', err);
+        }
       });
     });
 
@@ -53,23 +54,21 @@ export default class TinyCopy {
     return element;
   }
 
-  static exec(value: string): Promise {
-    return new Promise((resolve, reject) => {
-      const temp = TinyCopy.createTempElement(value);
-      document.body.appendChild(temp);
-      temp.select();
-      try {
-        if (document.execCommand('copy')) {
-          resolve(value);
-        } else {
-          reject(new Error('Not supported the execCommand.'));
-        }
-      } catch (e) {
-        reject(new Error('Not supported the execCommand.'));
-      } finally {
-        document.body.removeChild(temp);
+  static exec(value: string, callback:(err: ?Error, data: ?string) => void): void {
+    const temp = TinyCopy.createTempElement(value);
+    document.body.appendChild(temp);
+    temp.select();
+    try {
+      if (document.execCommand('copy')) {
+        callback(null, value);
+      } else {
+        callback(new Error('Not supported the execCommand.'), null);
       }
-    });
+    } catch (e) {
+      callback(new Error('Not supported the execCommand.'), null);
+    } finally {
+      document.body.removeChild(temp);
+    }
   }
 
   static isElement(node: any): boolean {

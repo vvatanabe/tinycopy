@@ -59,10 +59,12 @@ tinycopy.on('error', function(err) {
 
 // copy from text2
 element.addEventListener('click', function () {
-  TinyCopy.exec('hello').then(function (data) {
-    // onCopyCompleted
-  }).catch(function (err) {
-    // onCopyFailed
+  TinyCopy.exec('hello', function(err, data) {
+    if (!err) {
+      // onCopyFailed
+    } else {
+      // onCopyCompleted
+    }    
   });
 });
 ```
