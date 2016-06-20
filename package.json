@@ -1,6 +1,6 @@
 {
   "name": "tinycopy",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Tiny library for clipboard copy.",
   "author": "Yuichi Watanabe",
   "license": "MIT",

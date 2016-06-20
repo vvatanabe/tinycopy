@@ -213,15 +213,17 @@ sup {
     var $buttonText2 = $('#button-text2');
     $buttonText2.addEventListener('click', function () {
       var text = $buttonText2.getAttribute('data-text');
-      TinyCopy.exec(text).then(function (data) {
-        var message = 'Success. text is:' + data;
-        console.log(message);
-        alert(message);
-      }).catch(function (err) {
-        var message = 'Error.';
-        console.log(message);
-        console.log(err);
-        alert(message);
+      TinyCopy.exec(text, function(err, data) {
+        if (!err) {
+          var message = 'Success. text is:' + data;
+          console.log(message);
+          alert(message);
+        } else {
+          var message = 'Error.';
+          console.log(message);
+          console.log(err);
+          alert(message);
+        }
       });
     });
 
