@@ -1,6 +1,6 @@
 {
   "name": "tinycopy",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "Tiny library for clipboard copy.",
   "author": "Yuichi Watanabe",
   "license": "MIT",
@@ -28,7 +28,7 @@
     "coveralls": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "test-saucelabs": "zuul -- test/**/test-*.js",
     "build": "npm run build-lib && npm run build-dist && npm run build-minify",
-    "build-dist": "browserify --debug --standalone TinyCopy lib/main.js -o dist/tinycopy.js",
+    "build-dist": "browserify --standalone TinyCopy lib/main.js -o dist/tinycopy.js",
     "build-minify": "uglifyjs dist/tinycopy.js -o dist/tinycopy.min.js",
     "build-lib": "babel src --out-dir lib",
     "flow": "$(npm bin)/flow",
