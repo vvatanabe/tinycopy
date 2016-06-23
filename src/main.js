@@ -9,24 +9,21 @@ export default class TinyCopy {
 
   constructor(trigger: HTMLElement, target: HTMLInputElement|string) {
 
-    this.listeners = {};
-
     if (!TinyCopy.isElement(trigger)) {
       throw new Error('Illegal arguments error: trigger');
     }
+    if (!TinyCopy.isElement(target) && !TinyCopy.isText(target)) {
+      throw new Error('Illegal arguments error: target');
+    }
 
-    const value: string = ((target: any): string => {
-      if (TinyCopy.isElement(target)) {
-        return target.value
-      } else if(TinyCopy.isText(target)) {
-        return target
-      } else {
-        throw new Error('Illegal arguments error: target');
-      }
-    })(target);
+    this.listeners = {};
+
+    const getValue: Function = (target: any): string => {
+      return TinyCopy.isText(target) ? target : target.value;
+    }
 
     trigger.addEventListener('click', () => {
-      TinyCopy.exec(value, (err, data) => {
+      TinyCopy.exec(getValue(target), (err, data) => {
         if (!err) {
           this.emit('success', data);
         } else {
