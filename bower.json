@@ -1,6 +1,6 @@
 {
     "name": "tinycopy",
-    "version": "2.1.1",
+    "version": "2.1.2",
     "description": "Tiny library for clipboard copy.",
     "license": "MIT",
     "main": "dist/tinycopy.js",
