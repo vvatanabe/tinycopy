@@ -36,6 +36,12 @@ $ bower update tinycopy
 $ npm install tinycopy
 ```
 
+### Typings
+
+```
+$ typings i dt~tinycopy -SG
+```
+
 ## Usage
 
 ``` javascript
